@@ -22,6 +22,8 @@ require('./config/config-passport')
 app.use(passport.initialize())
 app.use(passport.session())
 
+const {DB_HOST, PORT= 3000} = process.env
+
 mongoose.connect(DB_HOST, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -32,5 +34,3 @@ mongoose.connect(DB_HOST, {
   console.log(error.message)
   process.exit(1)
 })
-
-const {DB_HOST, PORT= 3000} = process.env

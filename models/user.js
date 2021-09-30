@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Joi = require('joi')
 const bCrypt = require('bcryptjs')
 
 const Schema = mongoose.Schema
@@ -24,6 +25,15 @@ userSchema.methods.validPassword = function (password) {
   return bCrypt.compareSync(password, this.password)
 }
 
-const User = mongoose.model('user', userSchema)
+const joiSchema = Joi.object({
+    name: Joi.string(),
+    email: Joi.string().require(),
+    password: Joi.string().min(6).require(),
+})
 
-module.exports = User
+const User = model('user', userSchema)
+
+module.exports = {
+    User,
+    joiSchema,
+}

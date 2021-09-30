@@ -1,7 +1,7 @@
 const {NotFound} = require("http-errors");
 
 const {sendSuccessRes} = require("../helpers");
-const {Contact} = require{'../models'}
+const {Contact} = require('../models')
 
 const listContacts = async (req, res) => {
       const result = await Contact.find({}, '_id name email phone code active')
@@ -9,7 +9,7 @@ const listContacts = async (req, res) => {
     }
 
 const getContactById = async (req, res) => {
-      const {contactId } = req.params
+      const {contactId} = req.params
       const result = await Contact.findById({contactId, '_id name email phone code active'})
       if(!result){
         throw new NotFound(`Contact with id=${contactId} not found`);
