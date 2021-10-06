@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
+
 mongoose.Promise = global.Promise
 
 const app = require('../app')
@@ -33,4 +34,12 @@ mongoose.connect(DB_HOST, {
 .catch(error => {
   console.log(error.message)
   process.exit(1)
+
 })
+.then(() => app.listen(PORT))
+.catch(error => {
+  console.log(error.message)
+  process.exit(1)
+})
+
+const {DB_HOST, PORT= 3000} = process.env

@@ -40,6 +40,3 @@ mongoose.conect(DB_HOST,{
 })
 
 module.exports = app
-
-// AnnaIz
-// anna091195
