@@ -6,4 +6,5 @@ module.exports = {
   controllerWrapper,
   validation,
   authenticate
+
 }
